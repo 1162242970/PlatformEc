@@ -55,6 +55,11 @@ public class Configurator {
         }
     }
 
+    public final Configurator withIcon(IconFontDescriptor descriptor){
+        ICONS.add(descriptor);
+        return this;
+    }
+
     public final Configurator withApoiHost(String host) {
        LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
         return this;
