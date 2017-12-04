@@ -1,7 +1,9 @@
 package com.tinno.latte.app;
 
+import android.app.Application;
 import android.content.Context;
 
+import java.util.HashMap;
 import java.util.WeakHashMap;
 
 /**
@@ -14,17 +16,19 @@ public final class Latte {
 
     /**
      *
-     * @param context
-     * @return 返回一个Configurator的单例对象,完成各种配置
+     *返回一个Configurator的单例对象,完成各种配置
      */
-
     public static Configurator init(Context context) {
         getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(),
                 context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static WeakHashMap<String, Object> getConfigurations(){
+    public static HashMap<String, Object> getConfigurations(){
         return Configurator.getInstance().getLatteConfigs();
+    }
+
+    public static Context getApplication(){
+        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
     }
 }

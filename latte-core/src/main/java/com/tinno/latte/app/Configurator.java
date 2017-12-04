@@ -1,9 +1,12 @@
 package com.tinno.latte.app;
 
+import android.content.Context;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.WeakHashMap;
 
 /**
@@ -15,8 +18,7 @@ import java.util.WeakHashMap;
 
 public class Configurator {
 
-
-    private static final WeakHashMap<String, Object> LATTE_CONFIGS = new WeakHashMap<>();
+    private static final HashMap<String, Object> LATTE_CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private Configurator() {
@@ -39,10 +41,11 @@ public class Configurator {
     }
 
     public static Configurator getInstance() {
+
         return Holder.INSTANCE;
     }
 
-    final WeakHashMap<String, Object> getLatteConfigs(){
+    final HashMap<String, Object> getLatteConfigs(){
         return LATTE_CONFIGS;
     }
 
@@ -61,7 +64,7 @@ public class Configurator {
     }
 
     public final Configurator withApoiHost(String host) {
-       LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
+        LATTE_CONFIGS.put(ConfigType.API_HOST.name(), host);
         return this;
     }
 
