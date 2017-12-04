@@ -7,6 +7,7 @@ import com.tinno.latte.net.callback.IFailure;
 import com.tinno.latte.net.callback.IRequest;
 import com.tinno.latte.net.callback.ISuccess;
 import com.tinno.latte.net.callback.RequestCallbacks;
+import com.tinno.latte.net.download.DownloadHandler;
 import com.tinno.latte.ui.LatteeLoader;
 import com.tinno.latte.ui.LoaderStyle;
 
@@ -25,9 +26,13 @@ import retrofit2.Callback;
  */
 
 public class RestClient {
+
     private final String URL;
     private final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final IRequest IREQUEST;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final ISuccess ISUCCESS;
     private final IFailure IFAILURE;
     private final IError IERROR;
@@ -38,6 +43,9 @@ public class RestClient {
 
 
     protected RestClient(String url, Map<String, Object> params,
+                         String downloadDir,
+                         String exension,
+                         String name,
                          IRequest iRequest,
                          ISuccess iSuccess,
                          IFailure iFailure,
@@ -48,6 +56,9 @@ public class RestClient {
                          Context context) {
         this.URL = url;
         PARAMS.putAll(params);
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSION = exension;
+        this.NAME = name;
         this.IREQUEST = iRequest;
         this.ISUCCESS = iSuccess;
         this.IFAILURE = iFailure;
@@ -96,8 +107,8 @@ public class RestClient {
                 break;
             //上传文件
             case UPLOAD:
-                final RequestBody requestBody = RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()),FILE);
-                final MultipartBody.Part body = MultipartBody.Part.createFormData("file",FILE.getName());
+                final RequestBody requestBody = RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
+                final MultipartBody.Part body = MultipartBody.Part.createFormData("file", FILE.getName());
                 call = RestCreator.getRestService().upload(URL, body);
                 break;
             default:
@@ -150,4 +161,15 @@ public class RestClient {
     public final void delete() {
         request(HttpMethod.DELETE);
     }
+
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, IREQUEST, DOWNLOAD_DIR, EXTENSION, NAME, ISUCCESS, IFAILURE, IERROR)
+                .handleDownload();
+    }
+
+
 }
