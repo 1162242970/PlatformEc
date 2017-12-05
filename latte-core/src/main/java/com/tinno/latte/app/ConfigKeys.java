@@ -10,11 +10,13 @@ package com.tinno.latte.app;
  * 2.全局上下文
  * 3.确认初始化是否完成
  * 4.字体初始化
+ * 5.拦截器
  */
 
-public enum ConfigType {
+public enum ConfigKeys {
     API_HOST,
     APPLICATION_CONTEXT,
     CONFIG_READY,
-    ICON
+    ICON,
+    INTERCEPTOR
 }

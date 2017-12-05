@@ -1,16 +1,13 @@
 package com.tinno.platformec.example;
 
 import android.app.Application;
-import android.content.Context;
-import android.graphics.LightingColorFilter;
-import android.util.Log;
 
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
-import com.tinno.latte.app.ConfigType;
 import com.tinno.latte.app.Latte;
 import com.tinno.latte.ec.icon.FontEcModule;
+import com.tinno.latte.net.interceptor.DebugInterceptor;
 
-import java.util.HashMap;
+import okhttp3.Interceptor;
 
 /**
  * Created by android on 17-10-21.
@@ -25,6 +22,7 @@ public class ExampleApp extends Application{
                 .withApoiHost("http://localhost/")
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
+                .withInterceptor(new DebugInterceptor("index",R.raw.test))
                 .configure();
     }
 }

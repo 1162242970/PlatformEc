@@ -14,6 +14,7 @@ import okhttp3.ResponseBody;
 
 /**
  * Created by android on 17-12-4.
+ * 创建一个AsyncTask完成文件的下载
  */
 
 public class SaveFileTask extends AsyncTask<Object, Void, File> {
@@ -40,6 +41,7 @@ public class SaveFileTask extends AsyncTask<Object, Void, File> {
             extension = "";
         }
         if (name == null) {
+            //String.toUpperCase()将字符转换成大写
             return FileUtil.writeToDisk(is, dowlnloadDir, extension.toUpperCase(), extension);
         } else {
             return FileUtil.writeToDisk(is, dowlnloadDir, name);

@@ -39,6 +39,7 @@ public class FileUtil {
     //格式化的模板
     private static final String TIME_FORMAT = "_yyyyMMdd_HHmmss";
 
+    //获取SD卡路径
     private static final String SDCARD_DIR =
             Environment.getExternalStorageDirectory().getPath();
 
@@ -201,6 +202,7 @@ public class FileUtil {
     }
 
     public static File writeToDisk(InputStream is, String dir, String prefix, String extension) {
+        //创建一个prefix为前缀,中间为时间,extension为后缀名的文件;路径为SD卡+dir
         final File file = FileUtil.createFileByTime(dir, prefix, extension);
         BufferedInputStream bis = null;
         FileOutputStream fos = null;
@@ -365,4 +367,5 @@ public class FileUtil {
         }
         return data;
     }
+
 }
