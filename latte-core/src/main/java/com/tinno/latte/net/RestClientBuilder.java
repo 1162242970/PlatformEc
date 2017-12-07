@@ -6,15 +6,13 @@ import com.tinno.latte.net.callback.IError;
 import com.tinno.latte.net.callback.IFailure;
 import com.tinno.latte.net.callback.IRequest;
 import com.tinno.latte.net.callback.ISuccess;
-import com.tinno.latte.ui.LoaderStyle;
+import com.tinno.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 
 /**
  * Created by android on 17-12-1.

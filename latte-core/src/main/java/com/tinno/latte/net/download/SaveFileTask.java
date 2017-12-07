@@ -7,7 +7,7 @@ import android.os.AsyncTask;
 import com.tinno.latte.app.Latte;
 import com.tinno.latte.net.callback.IRequest;
 import com.tinno.latte.net.callback.ISuccess;
-import com.tinno.latte.util.FileUtil;
+import com.tinno.latte.util.file.FileUtil;
 import java.io.File;
 import java.io.InputStream;
 import okhttp3.ResponseBody;

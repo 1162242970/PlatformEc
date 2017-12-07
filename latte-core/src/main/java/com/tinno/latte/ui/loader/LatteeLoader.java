@@ -1,4 +1,4 @@
-package com.tinno.latte.ui;
+package com.tinno.latte.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
@@ -7,7 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.tinno.latte.R;
-import com.tinno.latte.util.DimenUtil;
+import com.tinno.latte.util.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

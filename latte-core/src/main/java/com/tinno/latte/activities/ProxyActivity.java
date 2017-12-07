@@ -35,7 +35,6 @@ public abstract class ProxyActivity extends SupportActivity{
         //绑定Fragment
         if (savedInstanceState == null) {
             loadRootFragment(R.id.delegate_container, setRootDelegate());
-            Log.d("ExampleDelegate","ProxyActivity");
         }
     }
 

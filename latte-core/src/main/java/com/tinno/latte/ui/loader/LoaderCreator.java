@@ -1,4 +1,4 @@
-package com.tinno.latte.ui;
+package com.tinno.latte.ui.loader;
 
 import android.content.Context;
 

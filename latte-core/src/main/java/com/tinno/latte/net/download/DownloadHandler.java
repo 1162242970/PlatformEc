@@ -7,7 +7,6 @@ import com.tinno.latte.net.callback.IError;
 import com.tinno.latte.net.callback.IFailure;
 import com.tinno.latte.net.callback.IRequest;
 import com.tinno.latte.net.callback.ISuccess;
-import com.tinno.latte.util.FileUtil;
 
 import java.util.WeakHashMap;
 

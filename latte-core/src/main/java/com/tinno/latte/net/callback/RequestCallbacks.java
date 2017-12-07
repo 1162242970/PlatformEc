@@ -2,8 +2,8 @@ package com.tinno.latte.net.callback;
 
 import android.os.Handler;
 
-import com.tinno.latte.ui.LatteeLoader;
-import com.tinno.latte.ui.LoaderStyle;
+import com.tinno.latte.ui.loader.LatteeLoader;
+import com.tinno.latte.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

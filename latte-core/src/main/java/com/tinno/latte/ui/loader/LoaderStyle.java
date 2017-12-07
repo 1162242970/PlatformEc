@@ -1,4 +1,4 @@
-package com.tinno.latte.ui;
+package com.tinno.latte.ui.loader;
 
 /**
  * 将各种形式的进度条装入一个枚举类中

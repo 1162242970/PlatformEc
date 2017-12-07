@@ -8,8 +8,8 @@ import com.tinno.latte.net.callback.IRequest;
 import com.tinno.latte.net.callback.ISuccess;
 import com.tinno.latte.net.callback.RequestCallbacks;
 import com.tinno.latte.net.download.DownloadHandler;
-import com.tinno.latte.ui.LatteeLoader;
-import com.tinno.latte.ui.LoaderStyle;
+import com.tinno.latte.ui.loader.LatteeLoader;
+import com.tinno.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

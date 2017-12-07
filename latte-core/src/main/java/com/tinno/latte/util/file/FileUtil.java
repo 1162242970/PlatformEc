@@ -1,4 +1,4 @@
-package com.tinno.latte.util;
+package com.tinno.latte.util.file;
 
 import android.content.ContentResolver;
 import android.content.Context;

@@ -2,7 +2,7 @@ package com.tinno.latte.net.interceptor;
 
 import android.support.annotation.RawRes;
 
-import com.tinno.latte.util.FileUtil;
+import com.tinno.latte.util.file.FileUtil;
 
 import java.io.IOException;
 import okhttp3.MediaType;
