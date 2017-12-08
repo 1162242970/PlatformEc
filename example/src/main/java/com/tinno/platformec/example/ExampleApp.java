@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.tinno.latte.app.Latte;
+import com.tinno.latte.ec.database.DatabaseManager;
 import com.tinno.latte.ec.icon.FontEcModule;
 import com.tinno.latte.net.interceptor.DebugInterceptor;
 
@@ -22,7 +23,8 @@ public class ExampleApp extends Application{
                 .withApoiHost("http://localhost/")
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
-                .withInterceptor(new DebugInterceptor("index",R.raw.test))
+                .withInterceptor(new DebugInterceptor("sign_up",R.raw.test))
                 .configure();
+        DatabaseManager.getInstance().init(this);
     }
 }

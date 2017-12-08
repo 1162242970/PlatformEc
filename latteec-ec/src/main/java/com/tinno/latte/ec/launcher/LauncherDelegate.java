@@ -1,12 +1,17 @@
 package com.tinno.latte.ec.launcher;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.View;
 
+import com.tinno.latte.app.AccountManager;
+import com.tinno.latte.app.IUserChecker;
 import com.tinno.latte.delegates.LatteDelegate;
+import com.tinno.latte.ui.launcher.ILauncherListener;
+import com.tinno.latte.ui.launcher.OnLauncherFinishTag;
 import com.tinno.latte.util.storage.LattePreference;
 import com.tinno.latte.util.timer.BaseTimerTask;
 import com.tinno.latte.util.timer.ITimerListener;
@@ -31,6 +36,8 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     private Timer mTimer = null;
     private int mCount = 5;
 
+    private ILauncherListener mILauncherListener;
+
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView() {
         if (mTimer != null) {
@@ -44,6 +51,14 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         mTimer = new Timer();
         final BaseTimerTask task = new BaseTimerTask(this);
         mTimer.schedule(task, 0, 1000);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
     }
 
     @Override
@@ -62,6 +77,21 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
             //检查用户是否登录了App
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNoSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
         }
     }
 
