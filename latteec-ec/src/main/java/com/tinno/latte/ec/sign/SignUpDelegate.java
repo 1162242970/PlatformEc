@@ -71,7 +71,7 @@ public class SignUpDelegate extends LatteDelegate {
 
     @OnClick(R2.id.tv_link_sign_in)
     void OnClickLink(){
-        start(new SignInDelegate());
+        getSupportDelegate().start(new SignInDelegate());
     }
 
     private boolean checkForm() {
@@ -90,7 +90,7 @@ public class SignUpDelegate extends LatteDelegate {
             mEmail.setError(null);
         }
 
-        if (email.isEmpty() || Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             mEmail.setError("错误的邮箱格式");
             isPass = false;
         } else {

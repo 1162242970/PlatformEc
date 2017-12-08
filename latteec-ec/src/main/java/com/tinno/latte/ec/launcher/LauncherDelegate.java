@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
-import android.util.Log;
 import android.view.View;
 
 import com.tinno.latte.app.AccountManager;
@@ -53,6 +52,13 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         mTimer.schedule(task, 0, 1000);
     }
 
+    /**
+     *
+     * 让Activity实现ILauncherListener接口
+     * 然后在checkIsShowScroll()调用
+     * 最后在Activity回调接口中的方法
+     *
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -74,13 +80,15 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
     //判断是否显示滑动启动页
     private void checkIsShowScroll() {
         if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
-            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+//            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+            startWithPop(new LauncherScrollDelegate());
         } else {
             //检查用户是否登录了App
             AccountManager.checkAccount(new IUserChecker() {
                 @Override
                 public void onSignIn() {
                     if (mILauncherListener != null) {
+                        //已经登录传入SIGNED对象
                         mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
                     }
                 }
@@ -88,6 +96,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                 @Override
                 public void onNoSignIn() {
                     if (mILauncherListener != null) {
+                        //未登录传入NOT_SIGNED对象
                         mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
                     }
                 }
@@ -114,4 +123,6 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
             }
         });
     }
+
+
 }

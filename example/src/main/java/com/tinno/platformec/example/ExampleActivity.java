@@ -32,7 +32,7 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
     @Override
     public LatteDelegate setRootDelegate() {
 
-        return new SignInDelegate();
+        return new LauncherDelegate();
     }
 
     /**
@@ -61,10 +61,12 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
             //已经登录,直接进入主页面
             case SIGNED:
                 Toast.makeText(this, "启动结束,用户登录了", Toast.LENGTH_SHORT).show();
+                startWithPop(new ExampleDelegate());
                 break;
             //未登录,进入登录页面
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束,用户没登录", Toast.LENGTH_SHORT).show();
+                //进入后,移除之前的所有界面
                 startWithPop(new SignInDelegate());
                 break;
             default:

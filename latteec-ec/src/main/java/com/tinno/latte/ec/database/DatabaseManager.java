@@ -31,6 +31,7 @@ public class DatabaseManager {
     }
 
     private void initDao(Context context) {
+        //建立数据库
         final ReleaseOpenHelper helper = new ReleaseOpenHelper(context, "fast_ec.db");
         final Database db = helper.getWritableDb();
         mDaoSession = new DaoMaster(db).newSession();

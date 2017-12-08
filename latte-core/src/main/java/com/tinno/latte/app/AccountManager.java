@@ -4,6 +4,8 @@ import com.tinno.latte.util.storage.LattePreference;
 
 /**
  * Created by android on 17-12-8.
+ *
+ * AccountManager类
  */
 
 public class AccountManager {
@@ -21,6 +23,11 @@ public class AccountManager {
         return LattePreference.getAppFlag(SignTag.SIGN_TAG.name());
     }
 
+    /**
+     * 根据SignTag.SIGN_TAG枚举类判断是否已经登录,true为登录,false未登录
+     * 用户点击登录按钮以后,调用setSignState()方法将SignTag.SIGN_TAG的值设为true
+     *
+     */
     public static void checkAccount(IUserChecker checker) {
         if (isSignIn()) {
             checker.onSignIn();

@@ -1,3 +1,9 @@
 {
-  "key":"value"
+  "data":{
+      "userId" : "0",
+      "name" : "李明",
+      "avatar" : "照片",
+      "gender" : "男",
+      "address" : "成都"
+  }
 }

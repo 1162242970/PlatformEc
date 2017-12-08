@@ -21,10 +21,9 @@ public class SignHandler {
         final String address = profileJson.getString("address");
 
         final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
-        DatabaseManager.getInstance().getDao().insert(profile);
+//        DatabaseManager.getInstance().getDao().insert(profile);
 
-        //保存注册成功状态
-        AccountManager.setSignState(true);
+        //让ExampleActivity回调onSignUpSuccess方法
         signListener.onSignUpSuccess();
     }
 
@@ -37,10 +36,13 @@ public class SignHandler {
         final String address = profileJson.getString("address");
 
         final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
+        //向表中插入数据
         DatabaseManager.getInstance().getDao().insert(profile);
 
-        //保存注册成功状态
+        //保存登录成功状态
         AccountManager.setSignState(true);
+
+        //让ExampleActivity回调onSignInSuccess方法
         signListener.onSignInSuccess();
     }
 }

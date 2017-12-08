@@ -30,6 +30,10 @@ public class SignInDelegate extends LatteDelegate {
 
     private ISignListener mISignListener = null;
 
+    /**
+     * 让Activity继承ISignListener接口
+     * 当登录成功的时候,Activity回调这个接口
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -64,7 +68,7 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick(R2.id.tv_link_sign_up)
     void OnClickLink() {
-        start(new SignUpDelegate());
+        getSupportDelegate().start(new SignUpDelegate());
     }
 
     private boolean checkForm() {
@@ -73,7 +77,7 @@ public class SignInDelegate extends LatteDelegate {
 
         boolean isPass = true;
 
-        if (email.isEmpty() || Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             mEmail.setError("错误的邮箱格式");
             isPass = false;
         } else {
