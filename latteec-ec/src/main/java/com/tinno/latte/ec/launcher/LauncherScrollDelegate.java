@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 /**
  * Created by android on 17-12-7.
+ * 注册界面
  */
 
 public class LauncherScrollDelegate extends LatteDelegate implements OnItemClickListener {

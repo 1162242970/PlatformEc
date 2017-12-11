@@ -19,6 +19,7 @@ import butterknife.OnClick;
 
 /**
  * Created by android on 17-12-7.
+ * 登录界面
  */
 
 public class SignUpDelegate extends LatteDelegate {
