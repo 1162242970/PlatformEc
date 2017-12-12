@@ -7,6 +7,8 @@ import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.tinno.latte.activities.ProxyActivity;
+import com.tinno.latte.app.ConfigKeys;
+import com.tinno.latte.app.Latte;
 import com.tinno.latte.delegates.LatteDelegate;
 import com.tinno.latte.ec.launcher.LauncherDelegate;
 import com.tinno.latte.ec.launcher.LauncherScrollDelegate;
@@ -27,6 +29,8 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
         if (actionBar != null) {
             actionBar.hide();
         }
+        //配置Activity
+        Latte.getConfigurator().withActivity(this);
     }
 
     @Override

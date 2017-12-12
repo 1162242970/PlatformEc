@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.tinno.latte.delegates.LatteDelegate;
 import com.tinno.latte.net.RestClient;
 import com.tinno.latte.net.callback.ISuccess;
+import com.tinno.latte.wechat.Callback.IWeChatSignInCallback;
+import com.tinno.latte.wechat.LatteWeChat;
 import com.tinno.latteec.ec.R;
 import com.tinno.latteec.ec.R2;
 
@@ -63,7 +65,12 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick(R2.id.icon_sign_in_weChat)
     void OnClickWeChat() {
+        LatteWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
 
+            }
+        }).signIn();
     }
 
     @OnClick(R2.id.tv_link_sign_up)

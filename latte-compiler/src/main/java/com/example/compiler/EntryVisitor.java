@@ -33,8 +33,14 @@ final class EntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
         return p;
     }
 
+    /**
+     *
+     * 创建类WXEntryActivity,定义其属性和继承于
+     *
+     */
     private void generateJavaCode(TypeMirror typeMirror) {
         final TypeSpec targetActivity =
+
                 TypeSpec.classBuilder("WXEntryActivity")
                         .addModifiers(Modifier.PUBLIC)
                         .addModifiers(Modifier.FINAL)

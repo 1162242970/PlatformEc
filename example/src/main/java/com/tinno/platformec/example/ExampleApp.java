@@ -24,6 +24,8 @@ public class ExampleApp extends Application{
                 .withIcon(new FontAwesomeModule())
                 .withIcon(new FontEcModule())
                 .withInterceptor(new DebugInterceptor("sign_up",R.raw.test))
+                .withWeChatAppId("")
+                .withWeChatAppSecret("")
                 .configure();
         DatabaseManager.getInstance().init(this);
     }
