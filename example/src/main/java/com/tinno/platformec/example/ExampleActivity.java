@@ -12,6 +12,7 @@ import com.tinno.latte.app.Latte;
 import com.tinno.latte.delegates.LatteDelegate;
 import com.tinno.latte.ec.launcher.LauncherDelegate;
 import com.tinno.latte.ec.launcher.LauncherScrollDelegate;
+import com.tinno.latte.ec.main.EcBottomDelegate;
 import com.tinno.latte.ec.sign.ISignListener;
 import com.tinno.latte.ec.sign.SignInDelegate;
 import com.tinno.latte.ec.sign.SignUpDelegate;
@@ -65,13 +66,13 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
             //已经登录,直接进入主页面
             case SIGNED:
                 Toast.makeText(this, "启动结束,用户登录了", Toast.LENGTH_SHORT).show();
-                startWithPop(new ExampleDelegate());
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             //未登录,进入登录页面
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束,用户没登录", Toast.LENGTH_SHORT).show();
                 //进入后,移除之前的所有界面
-                startWithPop(new SignInDelegate());
+                getSupportDelegate().startWithPop(new SignInDelegate());
                 break;
             default:
                 break;

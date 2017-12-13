@@ -19,10 +19,15 @@
 
     <!--透明Activity-->
     <style name="Theme.AppCompat.Translucent">
+        <!--不需要标题-->
         <item name="android:windowNoTitle">true</item>
+        <!--背景透明色-->
         <item name="android:windowBackground">@android:color/transparent</item>
+        <!--不需要缓存-->
         <item name="android:colorBackgroundCacheHint">@null</item>
+        <!--半透明-->
         <item name="android:windowIsTranslucent">true</item>
+        <!--无动画-->
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
     </style>
 </resources>
