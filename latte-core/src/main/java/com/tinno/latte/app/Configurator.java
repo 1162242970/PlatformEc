@@ -1,6 +1,7 @@
 package com.tinno.latte.app;
 
 import android.app.Activity;
+import android.os.Handler;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
@@ -20,12 +21,14 @@ import okhttp3.Interceptor;
 public class Configurator {
 
     private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
+    private static final Handler HANDLER = new Handler();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
         //枚举name方法,以字符串的形式输出
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
+        LATTE_CONFIGS.put(ConfigKeys.HANDLER, HANDLER);
     }
 
     public final void configure() {

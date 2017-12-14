@@ -25,34 +25,7 @@ public class ExampleDelegate extends LatteDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-//        testRestClient();
-    }
 
-    private void testRestClient() {
-        RestClient.builder()
-                .loader(getContext())
-                .url("http://localhost/index")
-                .params("","")
-                .success(new ISuccess() {
-                    @Override
-                    public void onSuccess(String response) {
-                        Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
-                    }
-                })
-                .failure(new IFailure() {
-                    @Override
-                    public void onFailure() {
-
-                    }
-                })
-                .error(new IError() {
-                    @Override
-                    public void onError(int code, String msg) {
-
-                    }
-                })
-                .build()
-                .get();
     }
 }
 

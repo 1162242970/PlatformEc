@@ -15,4 +15,6 @@
     <string name="sign_in_password">"密码"</string>
     <string name="sign_in_signIn">"登录"</string>
     <string name="sign_in_linkSignUp">"还没有账户？现在注册吧"</string>
+
+    <string name="index_search">搜索</string>
 </resources>

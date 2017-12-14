@@ -27,15 +27,17 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
+
     testCompile 'junit:junit:4.12'
     compile project(':latte-annotations')
+    //android support支持
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support:support-v4:26.+'
+    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:cardview-v7:26.+'
     //字体图标
     compile 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'
     compile 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
-    //android support支持
-    compile 'com.android.support:design:26.+'
-    compile 'com.android.support:cardview-v7:26.+'
     //Fragment依赖
     compile 'me.yokeyword:fragmentation:1.1.8'
     compile 'me.yokeyword:fragmentation-swipeback:1.1.8'
@@ -47,8 +49,8 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:converter-scalars:2.0.0'
     testCompile 'com.squareup.okhttp3:mockwebserver:3.9.1'
-    //JSON
-    compile 'com.alibaba:fastjson:1.2.41'
+    //JSON依赖Android版
+    compile 'com.alibaba:fastjson:1.1.57.android'
     //rx java
     compile 'io.reactivex.rxjava2:rxandroid:2.0.1'
     compile 'io.reactivex.rxjava2:rxjava:2.1.7'
@@ -66,5 +68,11 @@ dependencies {
     //微信依赖（包含统计）
     //noinspection GradleDynamicVersion
     compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    //RecyclerView依赖
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+    //图片处理
+    compile 'com.github.bumptech.glide:glide:4.0.0-RC0'
+    compile 'com.github.bumptech.glide:okhttp3-integration:4.0.0-RC0@aar'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
 
 }

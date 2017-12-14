@@ -8,13 +8,10 @@ import com.joanzapata.iconify.Icon;
 
 public enum  EcIcons implements Icon{
 
-    icon_scan('\uf606'),
-    icon_ali_pay('\uf606');
-
+    icon_scan('\ue602'),
+    icon_ali_pay('\ue606');
 
     private char character;
-
-
 
     EcIcons(char c) {
         this.character = c;
