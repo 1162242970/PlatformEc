@@ -77,6 +77,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         final int size = ITEMS.size();
+        //加载标题栏,注入信息
         for (int i = 0; i < size; i++) {
             LayoutInflater.from(getContext()).inflate(R.layout.bottom_item_icon_text_layout, mBottomBar);
             final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
@@ -98,6 +99,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
 
         //将集合换为数组
         final SupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new SupportFragment[size]);
+        //将主界面的fragment加载进去
         loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
     }
 

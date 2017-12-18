@@ -48,6 +48,7 @@ public class MultipleRecyclerAdapter extends BaseMultiItemQuickAdapter<MultipleI
 
     protected MultipleRecyclerAdapter(List<MultipleItemEntity> data) {
         super(data);
+        init();
     }
 
     public static MultipleRecyclerAdapter create(List<MultipleItemEntity> data) {

@@ -5,4 +5,6 @@ package com.tinno.latte.delegates;
  */
 
 public abstract class PermissionCheckerDelegate extends BaseDelegates{
+
+
 }

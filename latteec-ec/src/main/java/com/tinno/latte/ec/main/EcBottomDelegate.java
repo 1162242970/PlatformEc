@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 
 /**
  * Created by android on 17-12-12.
+ *
  */
 
 public class EcBottomDelegate extends BaseBottomDelegate{

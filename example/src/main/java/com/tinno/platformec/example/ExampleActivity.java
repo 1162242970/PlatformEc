@@ -7,17 +7,16 @@ import android.support.v7.app.ActionBar;
 import android.widget.Toast;
 
 import com.tinno.latte.activities.ProxyActivity;
-import com.tinno.latte.app.ConfigKeys;
 import com.tinno.latte.app.Latte;
 import com.tinno.latte.delegates.LatteDelegate;
 import com.tinno.latte.ec.launcher.LauncherDelegate;
-import com.tinno.latte.ec.launcher.LauncherScrollDelegate;
 import com.tinno.latte.ec.main.EcBottomDelegate;
 import com.tinno.latte.ec.sign.ISignListener;
 import com.tinno.latte.ec.sign.SignInDelegate;
-import com.tinno.latte.ec.sign.SignUpDelegate;
 import com.tinno.latte.ui.launcher.ILauncherListener;
 import com.tinno.latte.ui.launcher.OnLauncherFinishTag;
+
+import qiu.niorgai.StatusBarCompat;
 
 public class ExampleActivity extends ProxyActivity implements ISignListener,
         ILauncherListener {
@@ -32,6 +31,8 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
         }
         //配置Activity
         Latte.getConfigurator().withActivity(this);
+        //沉浸式状态栏设置
+        StatusBarCompat.translucentStatusBar(this, true);
     }
 
     @Override
