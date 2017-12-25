@@ -2,7 +2,7 @@ package com.tinno.latte.net.callback;
 
 import android.os.Handler;
 
-import com.tinno.latte.ui.loader.LatteeLoader;
+import com.tinno.latte.ui.loader.LatteLoader;
 import com.tinno.latte.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
@@ -48,7 +48,7 @@ public class RequestCallbacks implements Callback<String> {
             HANDLER.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    LatteeLoader.stopLoading();
+                    LatteLoader.stopLoading();
                 }
             },1000);
         }

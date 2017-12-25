@@ -21,7 +21,7 @@
         android:id="@+id/tb_index"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:layout_behavior="com.tinno.latte.ec.main.index.TransluncentBehavior"
+        app:layout_behavior="com.tinno.latte.ec.main.index.TranslucentBehavior"
         android:background="@android:color/transparent"
         >
         <android.support.v7.widget.LinearLayoutCompat

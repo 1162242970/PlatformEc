@@ -8,7 +8,7 @@ import com.tinno.latte.net.callback.IRequest;
 import com.tinno.latte.net.callback.ISuccess;
 import com.tinno.latte.net.callback.RequestCallbacks;
 import com.tinno.latte.net.download.DownloadHandler;
-import com.tinno.latte.ui.loader.LatteeLoader;
+import com.tinno.latte.ui.loader.LatteLoader;
 import com.tinno.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
@@ -44,7 +44,7 @@ public class RestClient {
 
     protected RestClient(String url, Map<String, Object> params,
                          String downloadDir,
-                         String exension,
+                         String extension,
                          String name,
                          IRequest iRequest,
                          ISuccess iSuccess,
@@ -57,7 +57,7 @@ public class RestClient {
         this.URL = url;
         PARAMS.putAll(params);
         this.DOWNLOAD_DIR = downloadDir;
-        this.EXTENSION = exension;
+        this.EXTENSION = extension;
         this.NAME = name;
         this.IREQUEST = iRequest;
         this.ISUCCESS = iSuccess;
@@ -82,7 +82,7 @@ public class RestClient {
         }
 
         if (LOADER_STYLE != null) {
-            LatteeLoader.showLoading(CONTEXT, LOADER_STYLE);
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
 
         switch (method) {

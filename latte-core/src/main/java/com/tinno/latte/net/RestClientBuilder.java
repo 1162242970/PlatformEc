@@ -24,7 +24,7 @@ public class RestClientBuilder {
     public static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private IRequest mIRequest = null;
     private String mDownloadDir = null;
-    private String mExension = null;
+    private String mExtension = null;
     private String mName = null;
     private ISuccess mISuccess = null;
     private IFailure mIFailure = null;
@@ -62,7 +62,7 @@ public class RestClientBuilder {
     }
 
     public final RestClientBuilder extension(String extension) {
-        this.mExension = extension;
+        this.mExtension = extension;
         return this;
     }
 
@@ -120,7 +120,7 @@ public class RestClientBuilder {
 
 
     public final RestClient build() {
-        return new RestClient(mUrl, PARAMS, mDownloadDir, mExension, mName, mIRequest, mISuccess,
+        return new RestClient(mUrl, PARAMS, mDownloadDir, mExtension, mName, mIRequest, mISuccess,
                 mIFailure, mIError, mBody, mLoaderStyle, mfile, mContext);
     }
 

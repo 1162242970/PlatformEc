@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.tinno.latte.net.HttpMethod;
 import com.tinno.latte.net.RestCreator;
-import com.tinno.latte.ui.loader.LatteeLoader;
+import com.tinno.latte.ui.loader.LatteLoader;
 import com.tinno.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
@@ -53,7 +53,7 @@ public class RxRestClient {
         Observable<String> observable = null;
 
         if (LOADER_STYLE != null) {
-            LatteeLoader.showLoading(CONTEXT, LOADER_STYLE);
+            LatteLoader.showLoading(CONTEXT, LOADER_STYLE);
         }
 
         switch (method) {

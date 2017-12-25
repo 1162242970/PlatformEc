@@ -78,6 +78,9 @@ public class SignInDelegate extends LatteDelegate {
         getSupportDelegate().start(new SignUpDelegate());
     }
 
+    /**
+     * 确认登录的格式是否正确
+     */
     private boolean checkForm() {
         final String email = mEmail.getText().toString();
         final String password = mPassword.getText().toString();

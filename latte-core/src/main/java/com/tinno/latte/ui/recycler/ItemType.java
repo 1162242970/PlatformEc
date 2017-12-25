@@ -13,4 +13,6 @@ public class ItemType {
     public static final int TEXT_IMAGE = 3;
     //轮播图
     public static final int BANNER = 4;
+    //分类菜单
+    public static final int VERTICAL_MENU_LIST = 5;
 }

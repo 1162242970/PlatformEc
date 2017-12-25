@@ -6,8 +6,10 @@ import com.tinno.latte.delegates.button.BaseBottomDelegate;
 import com.tinno.latte.delegates.button.BottomItemDelegate;
 import com.tinno.latte.delegates.button.BottomTabBean;
 import com.tinno.latte.delegates.button.ItemBuilder;
+import com.tinno.latte.ec.main.discover.DiscoverDelegate;
 import com.tinno.latte.ec.main.index.IndexDelegate;
-import com.tinno.latte.ec.main.sort.SortDelegate;
+import com.tinno.latte.ec.main.sort.list.SortDelegate;
+
 
 import java.util.LinkedHashMap;
 
@@ -21,13 +23,12 @@ public class EcBottomDelegate extends BaseBottomDelegate{
     @Override
     public LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder) {
         final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
-        final LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
-        items.put(new BottomTabBean("{fa-home}", "主页"), new IndexDelegate());
-        items.put(new BottomTabBean("{fa-sort}", "分类"), new SortDelegate());
-        items.put(new BottomTabBean("{fa-compass}", "发现"), new IndexDelegate());
-        items.put(new BottomTabBean("{fa-shopping-cart}", "购物车"), new IndexDelegate());
-        items.put(new BottomTabBean("{fa-user}", "我的"), new IndexDelegate());
-        return builder.addItem(items).build();
+        ITEMS.put(new BottomTabBean("{fa-home}", "主页"), new IndexDelegate());
+        ITEMS.put(new BottomTabBean("{fa-sort}", "分类"), new SortDelegate());
+        ITEMS.put(new BottomTabBean("{fa-compass}", "发现"), new DiscoverDelegate());
+        ITEMS.put(new BottomTabBean("{fa-shopping-cart}", "购物车"), new IndexDelegate());
+        ITEMS.put(new BottomTabBean("{fa-user}", "我的"), new IndexDelegate());
+        return builder.addItem(ITEMS).build();
     }
 
     @Override

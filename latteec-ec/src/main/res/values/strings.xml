@@ -17,4 +17,7 @@
     <string name="sign_in_linkSignUp">"还没有账户？现在注册吧"</string>
 
     <string name="index_search">搜索</string>
+    <string name="toolbar_class">分类</string>
+    <string name="toolbar_discover">发现</string>
+
 </resources>

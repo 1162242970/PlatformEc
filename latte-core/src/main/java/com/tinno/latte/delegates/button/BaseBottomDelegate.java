@@ -99,7 +99,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
 
         //将集合换为数组
         final SupportFragment[] delegateArray = ITEM_DELEGATES.toArray(new SupportFragment[size]);
-        //将主界面的fragment加载进去
+        //多fragment加载
         loadMultipleRootFragment(R.id.bottom_bar_delegate_container, mIndexDelegate, delegateArray);
     }
 

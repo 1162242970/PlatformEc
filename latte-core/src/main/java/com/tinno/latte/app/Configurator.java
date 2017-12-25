@@ -2,9 +2,12 @@ package com.tinno.latte.app;
 
 import android.app.Activity;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
+import com.tinno.latte.delegates.web.event.Event;
+import com.tinno.latte.delegates.web.event.EventManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -63,11 +66,17 @@ public class Configurator {
         }
     }
 
+    /**
+     * 配置字体图标库
+     */
     public final Configurator withIcon(IconFontDescriptor descriptor) {
         ICONS.add(descriptor);
         return this;
     }
 
+    /**
+     * 配置拦截器
+     */
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
         LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
@@ -80,6 +89,9 @@ public class Configurator {
         return this;
     }
 
+    /**
+     * 配置微信的AppId和AppSecret
+     */
     public final Configurator withWeChatAppId(String appId) {
         LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, appId);
         return this;
@@ -95,9 +107,33 @@ public class Configurator {
         return this;
     }
 
-
-    public final Configurator withApoiHost(String host) {
+    /**
+     * 配置本地服务器的Host
+     */
+    public final Configurator withApiHost(String host) {
         LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
+        return this;
+    }
+
+    /**
+     * 配置WebView服务器的Host
+     */
+    public final Configurator withWebHost(String host) {
+        LATTE_CONFIGS.put(ConfigKeys.WEB_HOST, host);
+        return this;
+    }
+
+    /**
+     * 配置Javascript中的实例的名字
+     */
+    public Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
+        return this;
+    }
+
+    public Configurator withJavaScriptInterface(@NonNull String name) {
+        LATTE_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
         return this;
     }
 

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!--浅灰-->
+    <!--深灰-->
     <color name="app_background">#1111</color>
-
+    <!--浅灰-->
+    <color name="view_background">#c9c9c9</color>
+    <!--微信黑-->
+    <color name="weChat_black">#323232</color>
+    <color name="item_background">#F1F1F1</color>
+    <color name="app_main">@android:color/holo_orange_dark</color>
 </resources>

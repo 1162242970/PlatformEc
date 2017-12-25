@@ -46,6 +46,8 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
      */
     @Override
     public void onSignInSuccess() {
+        //登录成功,进入主界面
+        getSupportDelegate().startWithPop(new EcBottomDelegate());
         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
     }
 
