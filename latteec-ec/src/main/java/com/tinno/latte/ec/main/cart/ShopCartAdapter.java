@@ -49,15 +49,15 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
         addItemType(ShopCartItemType.SHOP_CART_ITEM, R.layout.item_shop_cart);
     }
 
-    public void setIsSelectedAll(boolean isSelectedAll) {
+    void setIsSelectedAll(boolean isSelectedAll) {
         this.mIsSelectedAll = isSelectedAll;
     }
 
-    public void setCartItemListener(ICartItemListener listener) {
+    void setCartItemListener(ICartItemListener listener) {
         this.mCartItemListener = listener;
     }
 
-    public double getTotalPrice() {
+    double getTotalPrice() {
         return mTotalPrice;
     }
 

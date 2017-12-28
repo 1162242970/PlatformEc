@@ -63,7 +63,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
         if (position == INTEGERS.size() - 1) {
             LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(), true);
             //检查用户是否已经登录
-            startWithPop(new SignInDelegate());
+            getSupportDelegate().startWithPop(new SignInDelegate());
         }
     }
 }

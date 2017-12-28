@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.tinno.latte.delegates.button.BottomItemDelegate;
 import com.tinno.latte.net.RestClient;
+import com.tinno.latte.net.callback.IFailure;
 import com.tinno.latte.net.callback.ISuccess;
 import com.tinno.latte.ui.recycler.MultipleItemEntity;
 import com.tinno.latteec.ec.R;
@@ -31,7 +32,7 @@ import butterknife.OnClick;
  * 购物车主界面
  */
 
-public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, ICartItemListener {
+public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IFailure, ICartItemListener {
 
     private ShopCartAdapter mAdapter = null;
     //购物车数量标记
@@ -189,4 +190,8 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         mTvTotalPrice.setText(String.valueOf(price));
     }
 
+    @Override
+    public void onFailure() {
+        Toast.makeText(getContext(), "客官,你的网络不太好", Toast.LENGTH_SHORT).show();
+    }
 }

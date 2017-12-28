@@ -37,7 +37,9 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
         super.onCreate(savedInstanceState);
         //获取传入的url,传值给mUrl
         final Bundle args = getArguments();
-        mUrl = args.getString(RouteKeys.URL.name());
+        if (args != null) {
+            mUrl = args.getString(RouteKeys.URL.name());
+        }
         initWebView();
     }
 

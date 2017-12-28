@@ -17,6 +17,8 @@ import com.tinno.latteec.ec.R;
 
 import java.util.List;
 
+import me.yokeyword.fragmentation.SupportHelper;
+
 /**
  * Created by android on 17-12-18.
  */
@@ -34,9 +36,7 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
     }
 
     /**
-     *
      * 完成分类左侧List的数据设置
-     *
      */
     @Override
     protected void convert(final MultipleViewHolder holder, final MultipleItemEntity entity) {
@@ -98,9 +98,10 @@ public class SortRecyclerAdapter extends MultipleRecyclerAdapter {
      * 替换content
      */
     private void switchContent(ContentDelegate delegate) {
-        final LatteDelegate contentDelegate = DELEGATE.findChildFragment(ContentDelegate.class);
+        final LatteDelegate contentDelegate =
+                SupportHelper.findFragment(DELEGATE.getChildFragmentManager(), ContentDelegate.class);
         if (contentDelegate != null) {
-            contentDelegate.replaceFragment(delegate, false);
+            contentDelegate.getSupportDelegate().replaceFragment(delegate, false);
         }
     }
 }
