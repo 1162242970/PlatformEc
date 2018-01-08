@@ -118,7 +118,7 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                         }
                     }
                 });
-                //添加加减事件
+                //减商品的点击事件
                 iconMinus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -147,6 +147,7 @@ public final class ShopCartAdapter extends MultipleRecyclerAdapter {
                     }
                 });
 
+                //加商品的点击事件
                 iconPlus.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

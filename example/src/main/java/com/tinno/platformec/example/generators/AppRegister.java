@@ -9,7 +9,7 @@ import com.tinno.latte.wechat.templates.AppregisterTemplate;
  */
 @AppRegisterGenerator(
         packageName = "com.tinno.platformec.example",
-        appRegisterTemplete = AppregisterTemplate.class
+        appRegisterTemplate = AppregisterTemplate.class
 )
 public interface AppRegister {
 }

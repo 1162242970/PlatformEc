@@ -10,7 +10,7 @@ import com.tinno.latte.wechat.templates.WXEntryTemplate;
 
 @EntryGenerator(
         packageName = "com.tinno.platformec.example",
-        entryTemplete = WXEntryTemplate.class
+        entryTemplate = WXEntryTemplate.class
 )
 public interface WeChatEntry {
 }

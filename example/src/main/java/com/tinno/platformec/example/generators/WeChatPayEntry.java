@@ -10,7 +10,7 @@ import com.tinno.latte.wechat.templates.WXPayEntryTemplate;
 
 @PayEntryGenerator(
         packageName = "com.tinno.platformec.example",
-        payEntryTemplete = WXPayEntryTemplate.class
+        payEntryTemplate = WXPayEntryTemplate.class
 )
 public interface WeChatPayEntry {
 }

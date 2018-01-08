@@ -12,7 +12,7 @@
             <option value="$PROJECT_DIR$/latte-annotations" />
             <option value="$PROJECT_DIR$/latte-compiler" />
             <option value="$PROJECT_DIR$/latte-core" />
-            <option value="$PROJECT_DIR$/latteec-ec" />
+            <option value="$PROJECT_DIR$/latte-ec" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

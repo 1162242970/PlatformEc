@@ -12,8 +12,12 @@ import android.support.v7.widget.ViewStubCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.tinno.latte.app.Latte;
 import com.tinno.latte.delegates.button.BottomItemDelegate;
+import com.tinno.latte.ec.pay.FastPay;
+import com.tinno.latte.ec.pay.IAlPayResultListener;
 import com.tinno.latte.net.RestClient;
 import com.tinno.latte.net.callback.IFailure;
 import com.tinno.latte.net.callback.ISuccess;
@@ -32,7 +36,7 @@ import butterknife.OnClick;
  * 购物车主界面
  */
 
-public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IFailure, ICartItemListener {
+public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IFailure, ICartItemListener, IAlPayResultListener {
 
     private ShopCartAdapter mAdapter = null;
     //购物车数量标记
@@ -52,7 +56,7 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IF
         final int tag = (int) mIconSelectAll.getTag();
         if (tag == 0) {
             mIconSelectAll.setTextColor
-                    (ContextCompat.getColor(getContext(), R.color.app_main));
+                    (ContextCompat.getColor(Latte.getApplicationContext(), R.color.app_main));
             mIconSelectAll.setTag(1);
             mAdapter.setIsSelectedAll(true);
 
@@ -112,6 +116,12 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IF
     private void createOrder() {
         final String orderUrl = "你的生成订单的API";
         final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
+        orderParams.put("userid", 264392);
+        orderParams.put("amount", 0.01);
+        orderParams.put("type", 1);
+        orderParams.put("ordertype", 0);
+        orderParams.put("isanonymous", true);
+        orderParams.put("followeduser", 0);
         //加入你的参数
         RestClient.builder()
                 .url(orderUrl)
@@ -120,7 +130,12 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IF
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-
+                        //进行具体的支付
+                        final int orderId = JSON.parseObject(response).getInteger("result");
+                        FastPay.create(ShopCartDelegate.this)
+                                .setPayResultListener(ShopCartDelegate.this)
+                                .setOrderId(orderId)
+                                .beginPayDialog();
                     }
                 })
                 .build()
@@ -193,5 +208,30 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IF
     @Override
     public void onFailure() {
         Toast.makeText(getContext(), "客官,你的网络不太好", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPaySuccess() {
+
+    }
+
+    @Override
+    public void onPaying() {
+
+    }
+
+    @Override
+    public void onPayFail() {
+
+    }
+
+    @Override
+    public void onPayCancel() {
+
+    }
+
+    @Override
+    public void onPayConnectError() {
+
     }
 }

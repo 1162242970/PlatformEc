@@ -14,5 +14,5 @@ import java.lang.annotation.Target;
 public @interface AppRegisterGenerator {
     String packageName();
 
-    Class<?> appRegisterTemplete();
+    Class<?> appRegisterTemplate();
 }
