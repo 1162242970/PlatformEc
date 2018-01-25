@@ -76,6 +76,9 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
         return DELEGATE.onCreateFragmentAnimator();
     }
 
+    /**
+     * 交给DELEGATE处理,不然双击回退会发生错误
+     */
     @Override
     public void onBackPressedSupport() {
         DELEGATE.onBackPressedSupport();

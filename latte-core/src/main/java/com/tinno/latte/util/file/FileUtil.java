@@ -345,6 +345,9 @@ public class FileUtil {
         }
     }
 
+    /**
+     * 根据ContentProvider的路径获取真实的路径
+     */
     public static String getRealFilePath(final Context context, final Uri uri) {
         if (null == uri) return null;
         final String scheme = uri.getScheme();

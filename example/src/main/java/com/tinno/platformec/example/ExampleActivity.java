@@ -16,6 +16,7 @@ import com.tinno.latte.ec.sign.SignInDelegate;
 import com.tinno.latte.ui.launcher.ILauncherListener;
 import com.tinno.latte.ui.launcher.OnLauncherFinishTag;
 
+import cn.jpush.android.api.JPushInterface;
 import qiu.niorgai.StatusBarCompat;
 
 public class ExampleActivity extends ProxyActivity implements ISignListener,
@@ -33,6 +34,21 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
         Latte.getConfigurator().withActivity(this);
         //沉浸式状态栏设置
         StatusBarCompat.translucentStatusBar(this, true);
+    }
+
+    /**
+     * 极光推送
+     */
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
     }
 
     @Override

@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion '27.0.0'
+    buildToolsVersion '27.0.2'
     defaultConfig {
         applicationId "com.tinno.platformec.example"
         minSdkVersion 15
@@ -10,6 +10,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
+
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "f4b7f8a12bf981fd3e0718d5",
+                JPUSH_CHANNEL: "developer-default",
+        ]
+
     }
     buildTypes {
         release {
@@ -25,10 +37,12 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile project(':latte-ec')
+    provided project(':latte-annotations')
     annotationProcessor project(':latte-compiler')
-
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    //极光推送
+    compile 'cn.jiguang.sdk:jpush:3.0.1'
+    compile 'cn.jiguang.sdk:jcore:1.1.0'
 }

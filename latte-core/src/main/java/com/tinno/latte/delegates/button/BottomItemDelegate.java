@@ -14,7 +14,6 @@ import com.tinno.latte.delegates.LatteDelegate;
 
 public abstract class BottomItemDelegate extends LatteDelegate {
 
-
     // 再点一次退出程序时间设置
     private static final long WAIT_TIME = 2000L;
     private long TOUCH_TIME = 0;

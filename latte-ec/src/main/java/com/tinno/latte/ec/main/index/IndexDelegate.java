@@ -12,17 +12,11 @@ import android.view.View;
 
 import com.tinno.latte.delegates.button.BottomItemDelegate;
 import com.tinno.latte.ec.main.EcBottomDelegate;
-import com.tinno.latte.net.RestClient;
-import com.tinno.latte.net.callback.ISuccess;
 import com.tinno.latte.ui.recycler.Divider.BaseDecoration;
-import com.tinno.latte.ui.recycler.MultipleFields;
-import com.tinno.latte.ui.recycler.MultipleItemEntity;
 import com.tinno.latte.ui.refresh.RefreshHandler;
 import com.tinno.latteec.ec.R;
 import com.tinno.latteec.ec.R2;
 
-
-import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -71,7 +65,7 @@ public class IndexDelegate extends BottomItemDelegate {
                 getContext(), R.color.app_background), 5));
 
         //设置渐变Toolbar
-        final EcBottomDelegate ecBottomDelegate = getParentDelagate();
+        final EcBottomDelegate ecBottomDelegate = getParentDelegate();
         //主页面点击跳转商品页面的时候，必须获取父Fragment完成跳转,这样可以消除下面的标题栏
         mRecyclerView.addOnItemTouchListener(IndexItemClickListener.create(ecBottomDelegate));
     }

@@ -56,7 +56,7 @@ public class VerticalListDelegate extends LatteDelegate{
                         //获取处理后的List
                        final List<MultipleItemEntity> data =
                                new VerticalListDataConverter().setJsonData(response).convert();
-                        final SortDelegate delegate = getParentDelagate();
+                        final SortDelegate delegate = getParentDelegate();
                         final SortRecyclerAdapter adapter = new SortRecyclerAdapter(data, delegate);
                         mRecyclerView.setAdapter(adapter);
                     }

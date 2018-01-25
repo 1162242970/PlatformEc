@@ -32,7 +32,7 @@ public class DiscoverDelegate extends BottomItemDelegate {
         //创建Web页面
         final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
         //设置父类的delegate,之后在父类完成跳转
-        delegate.setTopDelegate(this.getParentDelagate());
+        delegate.setTopDelegate(this.getParentDelegate());
         //加载Web页面
         getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
     }

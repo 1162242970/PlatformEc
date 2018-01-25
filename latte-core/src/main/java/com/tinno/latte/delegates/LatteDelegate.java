@@ -6,7 +6,7 @@ package com.tinno.latte.delegates;
 
 public abstract class LatteDelegate extends PermissionCheckerDelegate{
 
-    public <T extends LatteDelegate> T getParentDelagate(){
+    public <T extends LatteDelegate> T getParentDelegate(){
         return (T)getParentFragment();
     }
 }
