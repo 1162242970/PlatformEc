@@ -1,6 +1,7 @@
 package com.tinno.latte.ec.main.index;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -9,22 +10,28 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.tinno.latte.delegates.button.BottomItemDelegate;
 import com.tinno.latte.ec.main.EcBottomDelegate;
+import com.tinno.latte.ec.main.index.search.SearchDelegate;
 import com.tinno.latte.ui.recycler.Divider.BaseDecoration;
 import com.tinno.latte.ui.refresh.RefreshHandler;
+import com.tinno.latte.util.callback.CallbackManager;
+import com.tinno.latte.util.callback.CallbackType;
+import com.tinno.latte.util.callback.IGlobalCallback;
 import com.tinno.latteec.ec.R;
 import com.tinno.latteec.ec.R2;
 
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by android on 17-12-12.
  */
 
-public class IndexDelegate extends BottomItemDelegate {
+public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener {
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecyclerView = null;
@@ -37,10 +44,26 @@ public class IndexDelegate extends BottomItemDelegate {
 
     private RefreshHandler mReFreshHandler = null;
 
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-        mReFreshHandler = RefreshHandler.create(mSwipeRefreshLayout, mRecyclerView, new IndexDataConverter());
+    //二维码点击按钮
+    @OnClick(R2.id.icon_index_scan)
+    void onClickScanQrCode() {
+        startScanWithCheck(this.getParentDelegate());
 
+    }
+
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
+        //加载页面的数据,实现分页加载,下拉刷新
+        mReFreshHandler = RefreshHandler.create(mSwipeRefreshLayout, mRecyclerView, new IndexDataConverter());
+        //处理扫描的二维码扫描
+        CallbackManager.getInstance()
+                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
+                    @Override
+                    public void executeCallback(@Nullable String args) {
+                        Toast.makeText(getContext(), "得到的二维码是" + args, Toast.LENGTH_LONG).show();
+                    }
+                });
+        mSearchView.setOnFocusChangeListener(this);
     }
 
     /**
@@ -75,6 +98,7 @@ public class IndexDelegate extends BottomItemDelegate {
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
+        //加载首页数据
         mReFreshHandler.firstPage("index.php");
     }
 
@@ -84,5 +108,14 @@ public class IndexDelegate extends BottomItemDelegate {
 
     }
 
-
+    /**
+     * SearchView聚焦的时候跳转到搜索页面
+     */
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus) {
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
+            mSearchView.clearFocus();
+        }
+    }
 }

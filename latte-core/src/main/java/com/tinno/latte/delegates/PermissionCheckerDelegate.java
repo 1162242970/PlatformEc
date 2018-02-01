@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import com.tinno.latte.ui.camera.CameraImageBean;
 import com.tinno.latte.ui.camera.LatteCamera;
 import com.tinno.latte.ui.camera.RequestCodes;
+import com.tinno.latte.ui.scanner.ScannerDelegate;
 import com.tinno.latte.util.callback.CallbackManager;
 import com.tinno.latte.util.callback.CallbackType;
 import com.tinno.latte.util.callback.IGlobalCallback;
@@ -40,6 +42,17 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     //这个是真正调用的方法
     public void startCameraWithCheck() {
         PermissionCheckerDelegatePermissionsDispatcher.startCameraWithCheck(this);
+    }
+
+    //扫描二维码
+    @NeedsPermission(Manifest.permission.CAMERA)
+    void startScan(BaseDelegate delegate) {
+        delegate.getSupportDelegate().startForResult(new ScannerDelegate(), RequestCodes.SCAN);
+
+    }
+
+    public void startScanWithCheck(BaseDelegate delegate) {
+        PermissionCheckerDelegatePermissionsDispatcher.startScanWithCheck(this, delegate);
     }
 
     @SuppressLint("NeedOnRequestPermissionsResult")
@@ -95,7 +108,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     final Uri resultUri = CameraImageBean.getInstance().getPath();
                     //裁剪前后的路径
                     UCrop.of(resultUri, resultUri)
-                            .withMaxResultSize(400,400)
+                            .withMaxResultSize(400, 400)
                             .start(getContext(), this);
                     break;
                 case RequestCodes.PICK_PHOTO:
@@ -105,13 +118,14 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     final String pickCrop = LatteCamera.creareCropFile().getPath();
                     if (pickPath != null) {
                         UCrop.of(pickPath, Uri.parse(pickCrop))
-                                .withMaxResultSize(400,400)
+                                .withMaxResultSize(400, 400)
                                 .start(getContext(), this);
                     }
                     break;
                 case RequestCodes.CROP_PHOTO:
                     final Uri cropUri = UCrop.getOutput(data);
                     //拿到裁剪后的数据进行处理
+
                     final IGlobalCallback<Uri> callback = CallbackManager
                             .getInstance()
                             .getCallback(CallbackType.ON_CROP);
@@ -127,4 +141,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
             }
         }
     }
+
+
+
 }

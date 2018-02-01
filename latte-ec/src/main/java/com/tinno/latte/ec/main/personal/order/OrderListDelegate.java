@@ -30,24 +30,20 @@ public class OrderListDelegate extends LatteDelegate {
     @BindView(R2.id.rv_order_list)
     RecyclerView mRecyclerView = null;
 
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        final Bundle args = getArguments();
-        if (args != null) {
-            mType = args.getString(PersonalDelegate.ORDER_TYPE);
-        }
-    }
-
     @Override
     public Object setLayout() {
         return R.layout.delegate_order_list;
     }
 
     @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        final Bundle args = getArguments();
+        mType = args.getString(PersonalDelegate.ORDER_TYPE);
+    }
 
+    @Override
+    public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
     }
 
     @Override
@@ -66,7 +62,7 @@ public class OrderListDelegate extends LatteDelegate {
                                 new OrderListDataConverter().setJsonData(response).convert();
                         final OrderListAdapter adapter = new OrderListAdapter(data);
                         mRecyclerView.setAdapter(adapter);
-
+                        mRecyclerView.addOnItemTouchListener(new OrderListClickListener(OrderListDelegate.this));
                     }
                 })
                 .build()

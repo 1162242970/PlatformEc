@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.tinno.latte.delegates.button.BottomItemDelegate;
+import com.tinno.latte.ec.main.personal.address.AddressDelegate;
 import com.tinno.latte.ec.main.personal.list.ListAdapter;
 import com.tinno.latte.ec.main.personal.list.ListBean;
 import com.tinno.latte.ec.main.personal.list.ListItemType;
@@ -74,6 +75,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
         ListBean address = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
+                .setDelegate(new AddressDelegate())
                 .setId(1)
                 .setText("收货地址")
                 .build();

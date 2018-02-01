@@ -9,6 +9,7 @@ import com.tinno.latte.app.Latte;
 
 /**
  * Created by android on 17-12-6.
+ * SharedPreferences工具类
  */
 
 public final class LattePreference {
@@ -73,6 +74,11 @@ public final class LattePreference {
                 .getBoolean(key, false);
     }
 
+    /**
+     * 提供给外部存入SharedPreferences的接口
+     * @param key 存入SharedPreferences时的Key
+     * @param val 存入的值
+     */
     public static void addCustomAppProfile(String key, String val) {
         getAppPreference()
                 .edit()
@@ -80,6 +86,11 @@ public final class LattePreference {
                 .apply();
     }
 
+    /**
+     * 提供外部获取SharedPreferences的接口
+     * @param key 获取SharedPreferences的Key
+     * @return 获取的值
+     */
     public static String getCustomAppProfile(String key) {
         return getAppPreference().getString(key, "");
     }

@@ -86,6 +86,8 @@ public class ExampleActivity extends ProxyActivity implements ISignListener,
             case SIGNED:
                 Toast.makeText(this, "启动结束,用户登录了", Toast.LENGTH_SHORT).show();
                 getSupportDelegate().startWithPop(new EcBottomDelegate());
+
+
                 break;
             //未登录,进入登录页面
             case NOT_SIGNED:

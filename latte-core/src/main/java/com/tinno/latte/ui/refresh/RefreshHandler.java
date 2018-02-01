@@ -14,6 +14,7 @@ import com.tinno.latte.ui.recycler.adapter.MultipleRecyclerAdapter;
 
 /**
  * Created by android on 17-12-13.
+ * 数据处理类
  */
 
 public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
@@ -75,14 +76,61 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
                 .get();
     }
 
+    /**
+     * 分页的处理
+     * @param url 请求分页的url
+     */
+    private void paging(final String url) {
+        //当前页面能显示的商品数量大小
+        final int pageSize = BEAN.getPageSize();
+        //当前已经显示的商品数量
+        final int currentCount = BEAN.getCurrentCount();
+        //总共的商品数量
+        final int total = BEAN.getTotal();
+        //当前的页数
+        final int index = BEAN.getPageIndex();
+        if (mAdapter.getData().size() < pageSize || currentCount >= total) {
+            //不需要分页
+            mAdapter.loadMoreEnd(true);
+        } else {
+            //分页加载
+            Latte.getHandler().post(new Runnable() {
+                @Override
+                public void run() {
+                    RestClient.builder()
+                            //获取下一页的数据
+                            .url(url + index)
+                            .success(new ISuccess() {
+                                @Override
+                                public void onSuccess(String response) {
+                                    //添加新的数据
+                                    mAdapter.addData(CONVERTER.setJsonData(response).convert());
+                                    //累加数量
+                                    BEAN.setCurrentCount(mAdapter.getData().size());
+                                    //刷新adapter
+                                    mAdapter.loadMoreComplete();
+                                    //页面+1,下次加载的时候就是获取下一页的数据
+                                    BEAN.addIndex();
+                                }
+                            })
+                            .build()
+                            .get();
+                }
+            });
+        }
+    }
+
 
     @Override
     public void onRefresh() {
         refresh();
     }
 
+    /**
+     * 滑动到最后一个Item的时候会调用该方法
+     */
     @Override
     public void onLoadMoreRequested() {
-
+        paging("refresh.php?index=");
     }
 }

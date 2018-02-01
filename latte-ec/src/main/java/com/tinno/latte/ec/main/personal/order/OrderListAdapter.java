@@ -31,7 +31,6 @@ public class OrderListAdapter extends MultipleRecyclerAdapter {
         addItemType(OrderListItemType.ITEM_ORDER_LIST, R.layout.item_order_list);
     }
 
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void convert(MultipleViewHolder holder, MultipleItemEntity entity) {
@@ -56,7 +55,6 @@ public class OrderListAdapter extends MultipleRecyclerAdapter {
                 title.setText(titleVal);
                 price.setText("价格：" + String.valueOf(priceVal));
                 time.setText("时间：" + timeVal);
-
                 break;
             default:
                 break;
